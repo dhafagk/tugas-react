@@ -1,4 +1,11 @@
+import { useState } from "react";
+
 const Table = (props) => {
+  const [deleted, setDeleted] = useState(false);
+  const handleDelete = async (id) => {
+    await fetch(`http://localhost:3001/student/${id}`, { method: "DELETE" });
+  };
+
   return (
     <table className="table-auto min-w-full leading-normal" id="table-student">
       <thead>
@@ -13,19 +20,30 @@ const Table = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.students?.map((student, index) => (
-          <tr key={index}>
-            <td className="table-d">{student.id}</td>
-            <td className="table-d">{student.fullname}</td>
-            <td className="table-d">{student.birthDate}</td>
-            <td className="table-d">{student.gender}</td>
-            <td className="table-d">{student.faculty}</td>
-            <td className="table-d">{student.programStudy}</td>
-            <td className="table-d">
-              <span className="text-red-500 cursor-pointer">Delete</span>
-            </td>
-          </tr>
-        ))}
+        {props.loading ? (
+          <span>Loading...</span>
+        ) : (
+          <>
+            {props.students?.map((student, index) => (
+              <tr key={index}>
+                <td className="table-d">{student.id}</td>
+                <td className="table-d">{student.fullname}</td>
+                <td className="table-d">{student.birthDate}</td>
+                <td className="table-d">{student.gender}</td>
+                <td className="table-d">{student.faculty}</td>
+                <td className="table-d">{student.programStudy}</td>
+                <td className="table-d">
+                  <span
+                    className="text-red-500 cursor-pointer"
+                    onClick={() => handleDelete(student.id)}
+                  >
+                    Delete
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </>
+        )}
       </tbody>
     </table>
   );
