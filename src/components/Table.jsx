@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const Table = (props) => {
-  const [deleted, setDeleted] = useState(false);
   const handleDelete = async (id) => {
     await fetch(`http://localhost:3001/student/${id}`, { method: "DELETE" });
   };
