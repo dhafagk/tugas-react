@@ -5,6 +5,35 @@ const Table = (props) => {
     await fetch(`http://localhost:3001/student/${id}`, { method: "DELETE" });
   };
 
+  const studentFaculty = (programStudy) => {
+    let faculty;
+    switch (programStudy) {
+      case "Ekonomi":
+      case "Manajemen":
+      case "Akuntansi":
+        faculty = "Fakultas Ekonomi";
+        break;
+      case "Administrasi Publik":
+      case "Administrasi Bisnis":
+      case "Hubungan Internasional":
+        faculty = "Fakultas Ilmu Sosial dan Politik";
+        break;
+      case "Teknik Sipil":
+      case "Arsitektur":
+        faculty = "Fakultas Teknik";
+        break;
+      case "Matematika":
+      case "Fisika":
+      case "Informatika":
+        faculty = "Fakultas Teknologi Informasi dan Sains";
+        break;
+      default:
+        break;
+    }
+
+    return faculty;
+  };
+
   return (
     <table className="table-auto min-w-full leading-normal" id="table-student">
       <thead>
@@ -29,7 +58,9 @@ const Table = (props) => {
                 <td className="table-d">{student.fullname}</td>
                 <td className="table-d">{student.birthDate}</td>
                 <td className="table-d">{student.gender}</td>
-                <td className="table-d">{student.faculty}</td>
+                <td className="table-d">
+                  {studentFaculty(student.programStudy)}
+                </td>
                 <td className="table-d">{student.programStudy}</td>
                 <td className="table-d">
                   <span

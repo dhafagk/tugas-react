@@ -55,6 +55,21 @@
       "gender": "Female",
       "faculty": "Fakultas Ilmu Sosial dan Politik",
       "programStudy": "Hubungan Internasional"
+    },
+    {
+      "fullname": "Peler",
+      "birthDate": "1995-07-26",
+      "gender": "Male",
+      "faculty": "Fakultas Ilmu Sosial dan Politik",
+      "programStudy": "Administrasi Publik",
+      "id": 10
+    },
+    {
+      "fullname": "afwafwaf",
+      "birthDate": "2023-07-07",
+      "gender": "Female",
+      "programStudy": "Hubungan Internasional",
+      "id": 11
     }
   ]
 }
